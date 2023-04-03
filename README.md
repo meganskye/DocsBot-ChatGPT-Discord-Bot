@@ -1,7 +1,6 @@
 # DocsBot-ChatGPT-Discord-Bot
  An interactive Discord chatbot powered by DocsBot.ai and OpenAI ChatGPT. 
 
-About
 There are two bots here. One utilizes a simple Q&A mode that resets the context of a conversation after every query. The other uses chat mode, which remembers the context of conversations by passing the Q&A session history as input along with new inquiries.
 
 Requirements
@@ -17,7 +16,10 @@ Usage
 ```
 python docsbot.py
 ```
-or for verbose output:
+for verbose output:
 ```
 python docsbot.py -v
 ```
+use a logfile:
+```
+python docsbot.py -l
