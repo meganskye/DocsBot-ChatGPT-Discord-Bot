@@ -4,7 +4,7 @@ import aiohttp  # async for speedier queries
 import argparse  # enable verbosity if necessary
 import json
 import asyncio
-import logging  # enable logging if necessary
+import logging  # output to a logfile
 
 # Replace with current Discord bot token and API base URL
 DISCORD_BOT_TOKEN = '{Discord_Bot_Token}'
