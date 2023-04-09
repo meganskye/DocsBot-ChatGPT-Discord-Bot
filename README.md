@@ -1,7 +1,13 @@
 # DocsBot-ChatGPT-Discord-Bot
  An interactive Discord chatbot powered by DocsBot.ai and OpenAI ChatGPT. 
 
-There are two bots here. One utilizes a simple Q&A mode that resets the context of a conversation after every query. The other uses chat mode, which remembers the context of conversations by passing the Q&A session history as input along with new inquiries.
+Obtain answers from a DocsBot AI right within Discord using this bot, by prefixing queries with the !ask command. 
+
+Features
+- Per user session history
+- Answers approaching 2000 characters are split into pieces
+- Formatting and presentation of answers is mostly preserved through use of codeblocks
+- Verbose output to logfile with status updates (optional)
 
 Requirements
 1. A pre-trained DocsBot.ai operating in the desired context
@@ -10,9 +16,8 @@ Requirements
 4. Manage Server permissions on the target Discord server
 
 Usage
-1. Configure the bot by editing the appropriate file and adding a DocsBot team ID, bot ID, and Discord bot token. 
-2. Save the file as docsbot.py
-3. Start the bot with:
+1. Configure the bot by adding a DocsBot team ID, bot ID, and Discord bot token
+2. Start the bot with:
 ```
 python docsbot.py
 ```
