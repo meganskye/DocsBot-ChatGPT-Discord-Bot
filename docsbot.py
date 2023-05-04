@@ -17,20 +17,18 @@ API_BASE_URL = 'https://api.docsbot.ai/teams/{DocsBot_Team_ID}/bots/{DocsBot_Bot
 # parse command line arguments
 parser = argparse.ArgumentParser()
 parser.add_argument('-v', '--verbose', action='store_true', help='Enable verbose output')
-parser.add_argument('-l', '--logfile', action='store_true', help='Verbose output to a logfile')
 args = parser.parse_args()
 
 # configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger()
 
-# use a --logfile when argument is passed
-if args.logfile:
-    script_name = os.path.splitext(os.path.basename(sys.argv[0]))[0]
-    log_filename = f"{script_name}.log"
-    file_handler = logging.FileHandler(log_filename)
-    file_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
-    logger.addHandler(file_handler)
+# use a logfile
+script_name = os.path.splitext(os.path.basename(sys.argv[0]))[0]
+log_filename = f"{script_name}.log"
+file_handler = logging.FileHandler(log_filename)
+file_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
+logger.addHandler(file_handler)
 
 # log status every 30 minutes
 async def report_status():
@@ -48,6 +46,18 @@ intents.message_content = True
 
 # initialize the bot with intents
 bot = commands.Bot(command_prefix='!', intents=intents)
+
+# check if the query length is fewer than ten characters
+def is_valid_length(question):
+    return len(question) >= 10
+
+# check if the query includes forbidden characters
+def is_utf8(question):
+    try:
+        question.encode('utf-8').decode('utf-8')
+        return True
+    except UnicodeDecodeError:
+        return False
 
 # call the DocsBot Chat API
 async def get_answer(question, history=[]):
@@ -73,6 +83,13 @@ chat_history = {}
 async def ask(ctx, *, question):
     user_id = str(ctx.message.author.id)
     logger.info(f"User {user_id} asked: {question}")
+
+    if not is_utf8(question):
+        await ctx.send("Error: The question should only contain UTF-8 characters.")
+        return
+    if not is_valid_length(question):
+        await ctx.send("Error: The question should be at least 10 characters long.")
+        return
 
     if user_id not in chat_history:
         chat_history[user_id] = []
@@ -111,4 +128,3 @@ async def on_ready():
 
 # run bot
 bot.run(DISCORD_BOT_TOKEN)
-

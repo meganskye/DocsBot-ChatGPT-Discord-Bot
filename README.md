@@ -25,6 +25,7 @@ for verbose output:
 ```
 python docsbot.py -v
 ```
-use a logfile:
-```
-python docsbot.py -l
+
+CHANGELOG
+
+- 1.1.00 - now outputs to a logfile by default, and returns an error if queries contain non-UTF-8 characters or are fewer than 10 characters.
