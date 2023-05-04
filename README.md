@@ -6,8 +6,9 @@ Obtain answers from a DocsBot AI right within Discord using this bot, by prefixi
 Features
 - Per user session history
 - Answers approaching 2000 characters are split into pieces
-- Formatting and presentation of answers is mostly preserved through use of codeblocks
-- Verbose output to logfile with status updates (optional)
+- Formatting and presentation of answers is mostly preserved through the use of codeblocks (needs work)
+- Logs to a file in the same directory by default
+- Queries are validated to contain only UTF-8 characters with a length greater than 10 to prevent common logfile errors
 
 Requirements
 1. A pre-trained DocsBot.ai operating in the desired context
