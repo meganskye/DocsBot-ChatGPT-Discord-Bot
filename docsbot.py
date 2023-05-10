@@ -10,9 +10,8 @@ import textwrap
 import asyncio
 import re
 
-# Replace with current Discord bot token and API base URL
-DISCORD_BOT_TOKEN = ''
-API_BASE_URL = 'https://api.docsbot.ai/teams/''/bots/'''
+DISCORD_BOT_TOKEN = '{Discord_Bot_Token}'
+API_BASE_URL = 'https://api.docsbot.ai/teams/{DocsBot_Team_ID}/bots/{DocsBot_Bot_ID}'
 
 # parse command line arguments
 parser = argparse.ArgumentParser()
