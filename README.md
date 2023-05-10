@@ -6,9 +6,9 @@ Obtain answers from a DocsBot AI right within Discord using this bot, by prefixi
 Features
 - Per user session history
 - Answers approaching 2000 characters are split into pieces
-- Formatting and presentation of answers is mostly preserved through the use of codeblocks (needs work)
 - Logs to a file in the same directory by default
-- Queries are validated to contain only UTF-8 characters with a length greater than 10 to prevent common logfile errors
+- Queries are prequalified to contain UTF-8 characters only and lengths greater than 10
+- Threaded responses to queries that auto-archive after 60 minutes.
 
 Requirements
 1. A pre-trained DocsBot.ai operating in the desired context
@@ -29,4 +29,5 @@ python docsbot.py -v
 
 CHANGELOG
 
-- 1.1.00 - now outputs to a logfile by default, and returns an error if queries contain non-UTF-8 characters or are fewer than 10 characters.
+- 1.1.00 - outputs to a logfile by default, returns an error if queries contain non-UTF-8 characters, and returns an error if queries contain fewer than 10 characters.
+- 1.2.00 - implemented threaded responses that auto-archive after 60 minutes, formatting of codeblocks is now preserved, and markdown intepreted correctly.
