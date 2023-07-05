@@ -1,5 +1,5 @@
 # DocsBot-ChatGPT-Discord-Bot
- An interactive Discord chatbot powered by DocsBot.ai and OpenAI ChatGPT. 
+ An interactive Discord chatbot powered by DocsBot.ai and OpenAI ChatGPT. Docsbot.ai has been chosen in this case due to ease of managing source material, and multiple instances.
 
 Obtain answers from a DocsBot AI right within Discord using this bot, by prefixing queries with the !ask command. 
 
